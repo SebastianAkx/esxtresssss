@@ -1,0 +1,7 @@
+/* Estilos extra opcionales */
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Pequeñas mejoras visuales para el demo */
+textarea { resize: vertical; }
