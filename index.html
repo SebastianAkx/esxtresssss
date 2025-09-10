@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AnonU - Demo Red Anónima Universitaria</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+  <div class="max-w-4xl mx-auto p-6">
+    <header class="flex items-center justify-between mb-6">
+      <div>
+        <h1 class="text-2xl font-bold">AnonU <span class="text-sm text-gray-500">— demo</span></h1>
+        <p class="text-sm text-gray-500">Comparte cómo te sientes. Público anónimo. Psicólogos pueden ofrecer DM.</p>
+      </div>
+      <div id="userBox" class="text-right"></div>
+    </header>
+
+    <!-- Auth / Register -->
+    <section id="auth" class="bg-white p-4 rounded shadow mb-6">
+      <h2 class="font-semibold mb-2">Registrar / Iniciar sesión (demo)</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-2 items-center">
+        <input id="email" type="email" placeholder="correo@universidad.edu" class="p-2 border rounded" />
+        <input id="password" type="password" placeholder="Contraseña" class="p-2 border rounded" />
+        <select id="role" class="p-2 border rounded">
+          <option value="student">Estudiante</option>
+          <option value="professor">Profesor</option>
+          <option value="psychologist">Psicólogo</option>
+        </select>
+        <div class="flex gap-2">
+          <button id="btnRegister" class="bg-green-600 text-white p-2 rounded flex-1">Registrar</button>
+          <button id="btnLogin" class="bg-blue-600 text-white p-2 rounded flex-1">Iniciar sesión</button>
+        </div>
+      </div>
+      <p class="text-xs text-gray-500 mt-2">
+        Nota: en la demo las contraseñas se guardan con un hash simple en localStorage (NO es seguro para producción). 
+        Para producción necesitas un backend, hashing seguro (bcrypt), y verificación por correo institucional.
+      </p>
+    </section>
+
+    <!-- New Post (solo visible si estás logueado) -->
+    <section id="createPostSection" class="hidden bg-white p-4 rounded shadow mb-6">
+      <h3 class="font-semibold mb-2">Nueva publicación (anónima)</h3>
+      <textarea id="postText" rows="3" placeholder="Escribe lo que sientes..." class="w-full p-2 border rounded"></textarea>
+      <div class="flex items-center justify-between mt-2">
+        <div class="text-sm text-gray-500">Se publicará como <span id="currentAlias" class="font-medium"></span></div>
+        <div>
+          <button id="btnPost" class="bg-green-600 text-white px-4 py-1 rounded">Publicar anónimamente</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feed (siempre visible) -->
+    <section id="feed" class="space-y-4"></section>
+
+    <!-- Modal / Notification area -->
+    <div id="modalContainer"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
